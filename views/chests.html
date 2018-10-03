@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ .title }}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <h1 id="title">{{ .title }}</h1>
+
+  <ul>
+    {{range $i, $a := .chests }}
+    <li>
+      {{ if eq $a.Name "Epic Chest" }}
+      <img src="/assets/img/chests/chest-epic.png" style="width: 50px" />
+      {{ else if eq $a.Name "Giant Chest" }}
+      <img src="/assets/img/chests/chest-giant.png" style="width: 50px" />
+      {{ else if eq $a.Name "Golden Chest" }}
+      <img src="/assets/img/chests/chest-golden.png" style="width: 50px" />
+      {{ else if eq $a.Name "Legendary Chest" }}
+      <img src="/assets/img/chests/chest-legendary.png" style="width: 50px" />
+      {{ else if eq $a.Name "Magical Chest" }}
+      <img src="/assets/img/chests/chest-magical.png" style="width: 50px" />
+      {{ else if eq $a.Name "Super Magical Chest" }}
+      <img src="/assets/img/chests/chest-supermagical.png" style="width: 50px" />
+      {{ else }}
+      <img src="/assets/img/chests/chest-silver.png" style="width: 50px" />
+      {{ end }}
+
+      {{ if eq $i 0 }}
+      <span class="upcoming-chest-item"> Next: {{$a.Name}}</span>
+      {{ else }}
+      <span class="upcoming-chest-item"> +{{$i}} {{$a.Name}}</span>
+      {{ end }}
+    </li>
+    {{end}}
+  </ul>
+
+</body>
+
+</html>
